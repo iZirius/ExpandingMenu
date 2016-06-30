@@ -265,7 +265,8 @@ public class ExpandingMenuButton: UIView, UIGestureRecognizerDelegate {
     }
     
     // MARK: - Fold Menu Items
-    private func foldMenuItems() {
+    // Made public so we can dismiss it from client.
+    public func foldMenuItems() {
         self.willDismissMenuItems?(self)
         self.isAnimating = true
         
