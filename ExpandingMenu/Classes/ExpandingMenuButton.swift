@@ -155,6 +155,12 @@ public class ExpandingMenuButton: UIView, UIGestureRecognizerDelegate {
         self.configureSounds()
     }
     
+    public func enableAccessibility(Label label:String, hint:String) {
+        self.centerButton.accessibilityLabel = label
+        self.centerButton.accessibilityHint = hint
+        self.centerButton.isAccessibilityElement = true
+    }
+    
     public convenience init(centerImage: UIImage, centerHighlightedImage: UIImage) {
         self.init(frame: CGRectZero, centerImage: centerImage, centerHighlightedImage: centerHighlightedImage)
     }

@@ -80,6 +80,7 @@ public class ExpandingMenuItem: UIView {
         baseButton.setImage(backgroundImage, forState: UIControlState.Normal)
         baseButton.setImage(backgroundHighlightedImage, forState: UIControlState.Highlighted)
         baseButton.translatesAutoresizingMaskIntoConstraints = false
+        baseButton.accessibilityElementsHidden = true
         self.addSubview(baseButton)
         
         self.addConstraint(NSLayoutConstraint(item: baseButton, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0))
@@ -108,6 +109,13 @@ public class ExpandingMenuItem: UIView {
         if let title = title {
             self.titleButton = self.createTitleButton(title, titleColor: titleColor)
         }
+    }
+    
+    public func enableAccessibility(label label:String, hint:String) {
+        
+        titleButton?.accessibilityLabel = label
+        titleButton?.accessibilityHint = hint
+        titleButton?.isAccessibilityElement = true
     }
     
     public convenience init(image: UIImage, highlightedImage: UIImage, backgroundImage: UIImage?, backgroundHighlightedImage: UIImage?, itemTapped: (() -> Void)?) {
